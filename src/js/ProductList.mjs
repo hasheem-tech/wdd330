@@ -2,6 +2,14 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 
 function productCardTemplate(product) {
+  const discount = Math.round(((product.SuggestedRetailPrice - product.FinalPrice) / product.SuggestedRetailPrice) * 100);
+  let discount_template = ``; 
+  if (product.FinalPrice < product.SuggestedRetailPrice){
+    discount_template = `
+        <p>Listed Price: <s>$${product.SuggestedRetailPrice}</s></p>
+        <p>(${discount}% Off)</p>`;
+  }
+  
   return `
     <li class="product-card">
       <a href="../product_pages/?products=${product.Id}&category=${product.Category}">
@@ -9,6 +17,7 @@ function productCardTemplate(product) {
         <h2>${product.Brand.Name}</h2>
         <h3>${product.Name}</h3>
         <p class="product-card__price">$${product.FinalPrice}</p>
+        ${discount_template}
       </a>
     </li>
     `;
