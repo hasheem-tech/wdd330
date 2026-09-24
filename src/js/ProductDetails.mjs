@@ -1,16 +1,16 @@
-
 import { setLocalStorage, updateCartCount } from "./utils.mjs";
 
 export default class ProductDetails {
-  constructor(productId, dataSource) {
+  constructor(productId, dataSource, category) {
     this.productId = productId;
     this.product = {};
     this.dataSource = dataSource;
+    this.category = category;
   }
 
   async init() {
     // Get the product
-    const product = await this.dataSource.findProductById(this.productId);
+    const product = await this.dataSource.findProductById(this.productId, this.category);
 
     // Check if the product was found
     if (!product) {
@@ -51,7 +51,7 @@ export default class ProductDetails {
 
     // Product image
     const image = document.getElementById("productImage");
-    image.src = product.Image;
+    image.src = product.Images.PrimaryExtraLarge;
     image.alt = product.Name;
 
     // Product price
