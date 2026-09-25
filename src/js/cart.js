@@ -13,12 +13,23 @@ async function renderCartContents() {
     return;
   }
 
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  const uniqueItems = cartItems.filter(
+    (item, index, self) =>
+      index === self.findIndex((cartItem) => cartItem.Id === item.Id),
+  );
+
+  const htmlItems = uniqueItems.map((item) => {
+    const quantity = cartItems.filter(
+      (cartItem) => cartItem.Id === item.Id,
+    ).length;
+
+    return cartItemTemplate(item, quantity);
+  });
 
   productList.innerHTML = htmlItems.join("");
 }
 
-function cartItemTemplate(item) {
+function cartItemTemplate(item, quantity) {
   return `
     <li class="cart-card divider">
 
@@ -40,7 +51,7 @@ function cartItemTemplate(item) {
       </p>
 
       <p class="cart-card__quantity">
-        qty: 1
+        qty: ${quantity}
       </p>
 
       <p class="cart-card__price">

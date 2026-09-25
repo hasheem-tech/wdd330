@@ -64,7 +64,7 @@ export default class CheckoutProcess {
   displayOrderTotals() {
     // once the totals are all calculated display them in the order summary page
     const cartTotal = document.getElementById("cartTotal");
-    cartTotal.innerText = this.itemTotal;
+    cartTotal.innerText = this.itemTotal.toFixed(2);
     
     const tax = document.getElementById("tax");
     tax.innerText = this.tax;
