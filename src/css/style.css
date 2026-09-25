@@ -35,7 +35,7 @@ header {
   justify-content: space-between;
   padding: 0.5rem;
 }
-a{
+a {
   text-decoration: none;
 }
 p {
@@ -110,7 +110,6 @@ button {
   border: 0;
   font-size: var(--large-font);
   cursor: pointer;
-  
 }
 
 .divider {
@@ -447,25 +446,24 @@ footer {
   text-align: right;
 }
 
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
+  background-color: var(--primary-color);
+  border: 1px solid darkorange;
+}
 
-  .alert {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5em 1em;
-    background-color: var(--primary-color);
-    border: 1px solid darkorange;
-  }
+.alert p {
+  margin: 0;
+}
 
-  .alert p {
-    margin: 0;
-  }
-
-  .alert button {
-    display: inline;
-    margin: 0;
-    padding: 0.1em 0.4em;
-    background: transparent;
-    color: var(--dark-grey);
-    font-size: 1em;
-  }
+.alert button {
+  display: inline;
+  margin: 0;
+  padding: 0.1em 0.4em;
+  background: transparent;
+  color: var(--dark-grey);
+  font-size: 1em;
+}
